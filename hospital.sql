@@ -72,3 +72,97 @@ CREATE TABLE Insurance ( #weak entity
 	comp_id CHAR(5),
 	comp_name CHAR(20),
 	PRIMARY KEY  (comp_id));
+
+
+
+CREATE TABLE r_Use(
+	eid CHAR(5),
+	eq_id CHAR(3),
+	eq_name CHAR(20),
+    FOREiGN KEY (eid)
+    REFERENCES Employees(eid)
+    ON DELETE CASCADE,
+    PRiMARY KEY (eid, eq_id),
+    FOREiGN KEY (eq_id) 
+    REFERENCES Medical_Equipment(eq_id)
+	ON DELETE CASCADE
+    );
+    
+    
+    #constraints kullanlcak mi emin olmak lazm ve primary key olup olmadklari ve İSA Yİ NE YAPCAZ ?
+	SELECT Employees.eid,Medical_Equipment.eq_id 
+    FROM Employees
+    iNNER JOiN r_Use
+    ON Employees.eid = r_Use.eid
+    iNNER JOiN Medical_Equipment
+    ON r_Use.eid = Medical_Equipment.eq_id;
+    
+    
+    
+    
+    CREATE TABLE Prescribes(
+	eid CHAR(5),
+    FOREiGN KEY (eid)
+    REFERENCES Employees(eid)
+    ON DELETE CASCADE,
+    PRiMARY KEY (eid, med_id),
+    FOREiGN KEY (med_id) 
+    REFERENCES Medication(med_id)
+	ON DELETE CASCADE
+    );
+    
+    CREATE TABLE Takes(
+    med_id CHAR(5),
+    pid CHAR(5) NOT NULL,
+    
+    
+    PRiMARY KEY (med_id,pid),
+    FOREiGN KEY(med_id)
+    REFERENCES Medication(med_id)
+    ON DELETE CASCADE,
+    FOREiGN KEY(pid)
+    REFERENCES Patient(pid)
+    ON DELETE CASCADE
+    
+    
+    );
+ 
+ CREATE TABLE Sold_By(
+ 
+	supplier_id CHAR(5) NOT NULL,
+    med_id CHAR(5) NOT NULL,
+    
+    
+    PRiMARY KEY (med_id,supplier_id),
+    FOREiGN KEY(med_id)
+    REFERENCES Medication(med_id)
+    ON DELETE CASCADE,
+    FOREiGN KEY(supplier_id)
+    REFERENCES Pharmaceutical_Supplier(supplier_id)
+    ON DELETE CASCADE
+ 
+ );
+ 
+ CREATE TABLE Taken_Care_By(
+	pid CHAR(5),
+    eid CHAR(5) NOT NULL,
+    
+    
+    PRiMARY KEY (pid,eid),
+    FOREiGN KEY(pid)
+    REFERENCES Patient(pid)
+    ON DELETE CASCADE,
+    FOREiGN KEY(eid)
+    REFERENCES Employee(eid)
+    ON DELETE CASCADE
+ );
+ 
+ 
+ 
+ CREATE TABLE Assigned_To (
+    room_id CHAR(3) PRIMARY KEY,
+    eid CHAR(5) UNIQUE,
+    FOREIGN KEY (room_id) REFERENCES Rooms(room_id),
+    FOREIGN KEY (eid) REFERENCES Employees(eid)
+);
+
