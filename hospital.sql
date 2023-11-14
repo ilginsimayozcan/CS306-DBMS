@@ -11,12 +11,10 @@ CREATE TABLE Patient (
     INDEX idx_record_id (record_id));
 
 CREATE TABLE Employees ( 
-	eid CHAR(5) NOT NULL,
-	name CHAR(20) NOT NULL,
-	gender CHAR(1) NOT NULL,
-	age INTEGER NOT NULL,
-	PRIMARY KEY  (eid),
-	INDEX idx_eid (eid));
+	eid CHAR(5) PRIMARY KEY,
+	name CHAR(20),
+	gender CHAR(1),
+	age INTEGER);
 
 CREATE TABLE Doctor_Assigned_To ( 
 	dep_name CHAR(20) NOT NULL,
@@ -41,9 +39,8 @@ CREATE TABLE Secretary (
 	FOREIGN KEY (secretary_id) REFERENCES Employees (eid));
     
 CREATE TABLE Medical_Equipment ( 
-	eq_id CHAR(3) NOT NULL,
-	eq_name CHAR(20) NOT NULL,
-	PRIMARY KEY  (eq_id));
+	eq_id CHAR(3) PRIMARY KEY,
+	eq_name CHAR(35));
     
 CREATE TABLE Room ( 
 	room_id CHAR(3) NOT NULL,
@@ -96,7 +93,6 @@ CREATE TABLE Owns_Insurance ( #weak entity + relation
 CREATE TABLE r_Use(
 	eid CHAR(5),
 	eq_id CHAR(3),
-	PRIMARY KEY (eq_id),
 	FOREIGN KEY (eid) REFERENCES Employees(eid) ON DELETE SET NULL ON UPDATE CASCADE,
 	FOREIGN KEY (eq_id) REFERENCES Medical_Equipment(eq_id) ON DELETE CASCADE ON UPDATE CASCADE);
     
