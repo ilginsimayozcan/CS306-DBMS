@@ -116,7 +116,7 @@ CREATE TABLE Sold_By(
 	FOREIGN KEY(med_id) REFERENCES Medication(med_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(supplier_id) REFERENCES Pharmaceutical_Supplier(supplier_id) ON DELETE CASCADE ON UPDATE CASCADE);
 
-CREATE TABLE Taken_Care_By( #BAK
+CREATE TABLE Taken_Care_By( 
 	pid CHAR(5) ,
 	doctor_id CHAR(5),
 	PRIMARY KEY (pid),
