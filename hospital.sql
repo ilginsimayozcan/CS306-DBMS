@@ -18,12 +18,15 @@ CREATE TABLE Employees (
 	PRIMARY KEY  (eid),
 	INDEX idx_eid (eid));
 
-CREATE TABLE Doctor ( 
+CREATE TABLE Doctor_Assigned_To ( 
 	dep_name CHAR(20) NOT NULL,
 	dep_id CHAR(5) NOT NULL,
-	doctor_id CHAR(5) NOT NULL,
+	doctor_id CHAR(5),
+	room_id CHAR(3) NOT NULL,
 	PRIMARY KEY(doctor_id),
-	FOREIGN KEY (doctor_id) REFERENCES Employees (eid));
+	FOREIGN KEY (doctor_id) REFERENCES Employees (eid)ON DELETE SET NULL ON UPDATE CASCADE,
+	FOREIGN KEY (room_id) REFERENCES room(room_id) ON DELETE CASCADE ON UPDATE CASCADE
+	);
 
 CREATE TABLE Nurse ( 
 	shift_hours INTEGER NOT NULL,
@@ -140,13 +143,6 @@ CREATE TABLE Appoints (
 	PRIMARY KEY (appointment_id),
 	FOREIGN KEY (appointment_id) REFERENCES reserves_appointment(appointment_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (secretary_id) REFERENCES Secretary(secretary_id) ON DELETE SET NULL ON UPDATE CASCADE);
-
-CREATE TABLE Assigned_To (
-	room_id CHAR(3) NOT NULL,
-	doctor_id CHAR(5),
-	PRIMARY KEY(room_id),
-	FOREIGN KEY (room_id) REFERENCES room(room_id) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (doctor_id) REFERENCES Doctor(doctor_id) ON DELETE SET NULL ON UPDATE CASCADE);
 
 CREATE TABLE Covered_By(
 	bid CHAR(5) NOT NULL,
