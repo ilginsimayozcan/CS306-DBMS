@@ -55,9 +55,9 @@ CREATE TABLE Pharmaceutical_Supplier (
 	PRIMARY KEY  (supplier_id));
     
 CREATE TABLE Medication ( 
-	med_id CHAR(5) NOT NULL,
-	med_name CHAR(20) NOT NULL,
-	med_price DOUBLE NOT NULL,
+	med_id CHAR(5),
+	med_name CHAR(20),
+	med_price DOUBLE,
 	PRIMARY KEY (med_id));
 
 CREATE TABLE Reserves_Appointment( #weak entity/relation
