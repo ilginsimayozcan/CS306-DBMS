@@ -106,8 +106,8 @@ CREATE TABLE Takes(
 	FOREIGN KEY (record_id) REFERENCES Patient (record_id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE Sold_By(
-	supplier_id CHAR(5) NOT NULL,
-	med_id CHAR(5) NOT NULL,
+	supplier_id CHAR(5),
+	med_id CHAR(5),
 	PRIMARY KEY (med_id,supplier_id),
 	FOREIGN KEY(med_id) REFERENCES Medication(med_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(supplier_id) REFERENCES Pharmaceutical_Supplier(supplier_id) ON DELETE CASCADE ON UPDATE CASCADE);
