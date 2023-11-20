@@ -85,7 +85,7 @@ CREATE TABLE Owns_Insurance ( #weak entity + relation
 	comp_name  CHAR(20),
 	pid  CHAR(5) NOT NULL,
 	record_id CHAR(5) NOT NULL,
-	PRIMARY KEY  (pid,comp_id,record_id),
+	PRIMARY KEY  (comp_id),
 	FOREIGN KEY  (pid) REFERENCES Patient (pid) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY  (record_id) REFERENCES Patient (record_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	INDEX idx_comp_id (comp_id));  
