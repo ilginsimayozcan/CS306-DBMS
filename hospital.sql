@@ -71,11 +71,11 @@ CREATE TABLE Reserves_Appointment( #weak entity/relation
 	FOREIGN KEY  (record_id) REFERENCES Patient (record_id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE  Pays_Bill ( #weak entity/relation
-	bid  CHAR(5) NOT NULL,
-	price  DOUBLE NOT NULL,
-	pid  CHAR(5) NOT NULL,
-	record_id CHAR(5) NOT NULL,
-	PRIMARY KEY  (bid,pid,record_id),
+	bid  CHAR(5),
+	price  DOUBLE,
+	pid  CHAR(5) ,
+	record_id CHAR(5),
+	PRIMARY KEY  (bid),
 	FOREIGN KEY  (pid) REFERENCES Patient (pid) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY  (record_id) REFERENCES Patient (record_id) ON DELETE CASCADE ON UPDATE CASCADE,
    	INDEX idx_bid (bid));       
