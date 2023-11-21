@@ -55,7 +55,7 @@ CREATE TABLE Pharmaceutical_Supplier (
 	PRIMARY KEY  (supplier_id));
     
 CREATE TABLE Medication ( 
-	med_id CHAR(5),
+	med_id CHAR(5) NOT NULL,
 	med_name CHAR(20),
 	med_price DOUBLE,
 	PRIMARY KEY (med_id));
