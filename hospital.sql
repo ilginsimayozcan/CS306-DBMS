@@ -11,10 +11,11 @@ CREATE TABLE Patient (
     INDEX idx_record_id (record_id));
 
 CREATE TABLE Employees ( 
-	eid CHAR(5) PRIMARY KEY,
+	eid CHAR(5) NOT NULL,
 	name CHAR(20),
 	gender CHAR(1),
-	age INTEGER);
+	age INTEGER),
+	PRIMARY KEY(eid);
 
 CREATE TABLE Doctor_Assigned_To ( 
 	dep_name CHAR(20) NOT NULL,
@@ -39,8 +40,9 @@ CREATE TABLE Secretary (
 	FOREIGN KEY (secretary_id) REFERENCES Employees (eid));
     
 CREATE TABLE Medical_Equipment ( 
-	eq_id CHAR(3) PRIMARY KEY,
-	eq_name CHAR(35));
+	eq_id CHAR(3) NOT NULL,
+	eq_name CHAR(35)),
+	PRIMARY KEY(eq_id);
     
 CREATE TABLE Room ( 
 	room_id CHAR(3) NOT NULL,
