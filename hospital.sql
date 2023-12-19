@@ -14,8 +14,8 @@ CREATE TABLE Employees (
 	eid CHAR(5) NOT NULL,
 	name CHAR(20),
 	gender CHAR(1),
-	age INTEGER),
-	PRIMARY KEY(eid);
+	age INTEGER,
+	PRIMARY KEY(eid));
 
 CREATE TABLE Doctor_Assigned_To ( 
 	dep_name CHAR(20) NOT NULL,
